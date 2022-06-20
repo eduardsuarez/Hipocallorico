@@ -27,8 +27,8 @@ public class HipocaloricoApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        UserRepository.deleteAll();
-        suppRepo.deleteAll();
+//        UserRepository.deleteAll();
+//        suppRepo.deleteAll();
         //Para efectos de formateo de fechas
 //        SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd");
 //        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
