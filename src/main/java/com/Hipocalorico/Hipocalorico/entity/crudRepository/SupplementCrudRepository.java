@@ -4,18 +4,13 @@
  */
 package com.Hipocalorico.Hipocalorico.entity.crudRepository;
 
-import com.Hipocalorico.Hipocalorico.entity.User;
-import java.util.Optional;
+import com.Hipocalorico.Hipocalorico.entity.Supplement;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 /**
  *
- * @author eduar
+ * @author Eduard Suárez
  */
-public interface UserCrudRepository extends MongoRepository<User, Integer> {
-
-    public Optional<User> findByEmail(String email);
-
-    Optional<User> findByEmailAndPassword(String email, String password);
-
+public interface SupplementCrudRepository extends MongoRepository<Supplement, String>{
+    
 }
