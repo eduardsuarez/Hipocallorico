@@ -32,7 +32,7 @@ function registrar() {
     $.ajax({
         method: "POST",
         //url del servicio
-        url: "http://localhost:8080/api/user/new",
+        url: "http://localhost:8074/api/user/new",
         //envío datos capturados por el usuario a la petición
         data: datosPeticion,
         //tipo de contenido

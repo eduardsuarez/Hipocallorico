@@ -17,7 +17,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
  * @author Eduard Suárez
  */
 
-@Document(collation = "orders")
+@Document(collection = "orders")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

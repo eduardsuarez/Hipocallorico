@@ -19,7 +19,7 @@ function registrar(){
 
     $.ajax({
         //url del servicio
-        url: "http://localhost:8080/api/user/"+email + "/" + password,
+        url: "http://localhost:8074/api/user/"+email + "/" + password,
         //tipo de petición
         type: 'GET',
         //tipo de contenido
