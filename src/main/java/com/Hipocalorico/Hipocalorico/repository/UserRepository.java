@@ -30,10 +30,6 @@ public class UserRepository implements Serializable {
         return crudRepository.findById(id);
     }
 
-    public User saveUser(User user) {
-        return crudRepository.save(user);
-    }
-
     public Boolean existeEmail(String email) {
         Optional<User> usuario = crudRepository.findByEmail(email);
         return !usuario.isEmpty();

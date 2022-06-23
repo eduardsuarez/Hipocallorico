@@ -1,5 +1,6 @@
 package com.Hipocalorico.Hipocalorico;
 
+import com.Hipocalorico.Hipocalorico.entity.Order;
 import com.Hipocalorico.Hipocalorico.entity.Supplement;
 import com.Hipocalorico.Hipocalorico.entity.User;
 import com.Hipocalorico.Hipocalorico.entity.crudRepository.SupplementCrudRepository;
@@ -27,27 +28,36 @@ public class HipocaloricoApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-//        UserRepository.deleteAll();
-//        suppRepo.deleteAll();
+        UserRepository.deleteAll();
+        suppRepo.deleteAll();
         //Para efectos de formateo de fechas
-//        SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd");
-//        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-//
-//        UserRepository.saveAll(
-//                List.of(new User(1, "453423", "JUANA LA LOCA",  "CL 34 NRO AAA..", "234123", "juanaloca@gmail.com", "Demo123.", "ZONA 1", "ADM"),
-//                        new User(2, "165413", "Eduard Suárez",  "CL 34 NRO AAA..", "10942", "suareze205@gmail.com", "qwerty.", "ZONA 1", "ADM")
-//                ));
+        SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd");
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
-//        suppRepo.saveAll(
-//                List.of(new Supplement("AP-903", "MARCA 1", "CATEGORIA 1", "OBJETIVO 1", "descripción", true, 150000, 10, "https://www.avasoluciones.com/uploads/2021/09/910-006127.jpg")
-//                )
-//        );
+        UserRepository.saveAll(
+                List.of(new User(1, "453423", "JUANA LA LOCA", ft.parse("1986-11-15"), "11", "CL 34 NRO AAA..", "234123", "juanaloca@gmail.com", "Demo123.", "ZONA 1", "ADM"),
+                        new User(2, "165413", "Eduard Suárez", ft.parse("1998-09-21"), "09", "CL 34 NRO AAA..", "10942", "suareze205@gmail.com", "qwerty.", "ZONA 1", "ADM")
+                ));
+
+        suppRepo.saveAll(
+                List.of(new Supplement("AP-903", "MARCA 1", "CATEGORIA 1", "OBJETIVO 1", "descripción", true, 150000, 10, "https://www.avasoluciones.com/uploads/2021/09/910-006127.jpg")
+                )
+        );
 //        System.out.println("Listado de usuarios");
 //        UserRepository.findAll().forEach(System.out::println);
-        
+//
 //        System.out.println("Listado de suplementos");
 //        suppRepo.findAll().forEach(System.out::println);
 
+        //Instanciar las ordenes
+        Order orderOne = new Order();
+        orderOne.setId(1);
+        Order orderTwo = new Order();
+        orderTwo.setId(2);
+        
+        //Recuperar vendedores
+        //Optional<User> salesManOne = UserRepository.findById(3)
+        
     }
 
 }

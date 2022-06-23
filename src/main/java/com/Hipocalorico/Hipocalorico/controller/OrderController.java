@@ -4,9 +4,8 @@
  */
 package com.Hipocalorico.Hipocalorico.controller;
 
-import com.Hipocalorico.Hipocalorico.entity.User;
-import com.Hipocalorico.Hipocalorico.service.UserService;
-import java.io.Serializable;
+import com.Hipocalorico.Hipocalorico.entity.Order;
+import com.Hipocalorico.Hipocalorico.service.OrderService;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,59 +18,52 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
  *
- * @author eduar
+ * @author Eduard Suárez
  */
 @RestController
-@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
-@RequestMapping("/api/user")
-public class UserController implements Serializable {
-
+@RequestMapping("/api/order")
+@CrossOrigin("*")
+public class OrderController {
     @Autowired
-    private UserService service;
+    private OrderService orderService;
 
     @GetMapping("/all")
-    public List<User> findAllUsers() {
-        return service.getUsers();
+    public List<Order> getAll() {
+        return orderService.getAll();
     }
-    
+
     @GetMapping("/{id}")
-    public Optional <User> getUserId(@PathVariable("id") int id){
-        return service.getUserById(id);
-    }
-    
-    @GetMapping("/emailexist/{email}")
-    public boolean existeEmail(@PathVariable("email") String email) {
-        return service.existeEmail(email);
-    }
-    
-    @GetMapping("/{email}/{password}")
-    public User autenticarUsuario(@PathVariable("email") String email, @PathVariable("password") String password) {
-        return service.autenticarUsuario(email, password);
+    public Optional<Order> getOrder(@PathVariable("id") int id) {
+        return orderService.getOrder(id);
     }
 
     @PostMapping("/new")
     @ResponseStatus(HttpStatus.CREATED)
-    public User saveUser(@RequestBody User user) {
-        return service.save(user);
-
+    public Order create(@RequestBody Order gadget) {
+        return orderService.create(gadget);
     }
-
 
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
-    public User update(@RequestBody User user) {
-        return service.update(user);
+    public Order update(@RequestBody Order gadget) {
+        return orderService.update(gadget);
     }
-    
+
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public boolean delete(@PathVariable("id") int id){
-        return service.delete(id);
+    public boolean delete(@PathVariable("id") int id) {
+        return orderService.delete(id);
     }
+    
+    //Reto 3:Ordenes de pedido asociadas a los asesores de una zona
+    @GetMapping("/zona/{zona}")
+    public List<Order> findByZone(@PathVariable("zona") String zona) {
+        return orderService.findByZone(zona);
+    }
+    
 }

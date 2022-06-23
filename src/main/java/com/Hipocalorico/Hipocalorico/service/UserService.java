@@ -30,10 +30,6 @@ public class UserService implements Serializable {
         return repository.getUserById(id);
     }
 
-    public User saveUser(User user) {
-        return repository.saveUser(user);
-    }
-
     public boolean existeEmail(String email) {
         return repository.existeEmail(email);
     }
@@ -54,7 +50,7 @@ public class UserService implements Serializable {
             Optional<User> e = repository.getUserById(user.getId());
             if (e.isEmpty()) {
                 if (existeEmail(user.getEmail()) == false) {
-                    return repository.saveUser(user);
+                    return repository.save(user);
                 } else {
                     return user;
                 }
