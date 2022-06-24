@@ -29,6 +29,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/supplements")
 @CrossOrigin("*")
 public class SupplementController {
+
     @Autowired
     private SupplementService servicio;
 
@@ -59,6 +60,15 @@ public class SupplementController {
     public boolean delete(@PathVariable("reference") String reference) {
         return servicio.delete(reference);
     }
-    
-}
 
+    @GetMapping("/price/{price}")
+    public List<Supplement> gadgetsByPrice(@PathVariable("price") double precio) {
+        return servicio.gadgetsByPrice(precio);
+    }
+
+    @GetMapping("/description/{description}")
+    public List<Supplement> findByDescriptionLike(@PathVariable("description") String description) {
+        return servicio.findByDescriptionLike(description);
+    }
+
+}

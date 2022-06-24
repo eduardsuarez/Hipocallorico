@@ -74,4 +74,9 @@ public class UserController implements Serializable {
     public boolean delete(@PathVariable("id") int id){
         return service.delete(id);
     }
+    
+    @GetMapping("/birthday/{month}")
+    public List<User> birthtDayList(@PathVariable("month") String monthBirthtDay) {
+        return service.birthtDayList(monthBirthtDay);
+    }
 }

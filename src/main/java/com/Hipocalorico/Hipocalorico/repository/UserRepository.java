@@ -38,17 +38,25 @@ public class UserRepository implements Serializable {
     public Optional<User> autenticarUsuario(String email, String password) {
         return crudRepository.findByEmailAndPassword(email, password);
     }
-    
+
     public User save(User user) {
         return crudRepository.save(user);
     }
-    
+
     public User update(User user) {
         return crudRepository.save(user);
     }
-    
+
     public void delete(User user) {
         crudRepository.delete(user);
+    }
+
+    public Optional<User> lastUserId() {
+        return crudRepository.findTopByOrderByIdDesc();
+    }
+
+    public List<User> birthtDayList(String monthBirthtDay) {
+        return crudRepository.findByMonthBirthtDay(monthBirthtDay);
     }
 
 }

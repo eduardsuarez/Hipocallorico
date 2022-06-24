@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class SupplementService {
+
     @Autowired
     private SupplementRepository repository;
 
@@ -78,5 +79,14 @@ public class SupplementService {
         }).orElse(false);
         return aBoolean;
     }
-    
+
+    //
+    public List<Supplement> gadgetsByPrice(double price) {
+        return repository.gadgetsByPrice(price);
+    }
+
+    //
+    public List<Supplement> findByDescriptionLike(String description) {
+        return repository.findByDescriptionLike(description);
+    }
 }

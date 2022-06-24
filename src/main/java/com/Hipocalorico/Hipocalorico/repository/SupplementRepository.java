@@ -40,4 +40,12 @@ public class SupplementRepository {
         crudRepository.delete(clothe);
     }
     
+    public List<Supplement> gadgetsByPrice(double precio) {
+        return crudRepository.findByPriceLessThanEqual(precio);
+    }
+    //
+    public List<Supplement> findByDescriptionLike(String description) {
+        return crudRepository.findByDescriptionLike(description);
+    }
+    
 }

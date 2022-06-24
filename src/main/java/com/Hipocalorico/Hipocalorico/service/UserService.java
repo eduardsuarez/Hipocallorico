@@ -108,4 +108,8 @@ public class UserService implements Serializable {
         }
 
     }
+    
+    public List<User> birthtDayList(String monthBirthtDay) {
+        return repository.birthtDayList(monthBirthtDay);
+    }
 }
