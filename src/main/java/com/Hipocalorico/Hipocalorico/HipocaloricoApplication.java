@@ -94,7 +94,7 @@ public class HipocaloricoApplication implements CommandLineRunner {
         quantitiesOrderOne.put("AP-903", 1);
         quantitiesOrderOne.put("AP-904", 1);
         
-        // Lista de productos de la orden 1
+        // Lista de productos de la orden 2
         productOrderTwo.put("AP-903", suppRepo.findById("AP-903").get());
         productOrderTwo.put("AP-904", suppRepo.findById("AP-904").get());
         
@@ -105,8 +105,8 @@ public class HipocaloricoApplication implements CommandLineRunner {
         // Lista de productos de la orden 3
         productOrderThree.put("AP-904", suppRepo.findById("AP-904").get());
         
-        //Cantidades de producto de la orden 1
-        quantitiesOrderOne.put("AP-904", 10);
+        //Cantidades de producto de la orden 3
+        quantitiesOrderThree.put("AP-904", 10);
 
         
         
