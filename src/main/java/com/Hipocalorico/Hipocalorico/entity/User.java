@@ -5,49 +5,34 @@
 package com.Hipocalorico.Hipocalorico.entity;
 
 import java.io.Serializable;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import java.util.Date;
 import javax.persistence.Id;
-import javax.persistence.Index;
-import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
  *
  * @author eduar
  */
-@Entity
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
-@Table(name = "user")
+@Document(collection = "usuarios")
 public class User implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-    @NonNull
-    @Column(name = "user_email", nullable = false, length = 50)
-    private String email;
-
-    @NonNull
-    @Column(name = "user_password", nullable = false, length = 50)
-    private String password;
-
-    @NonNull
-    @Column(name = "user_name", nullable = false, length = 80)
+    private String identification;
     private String name;
-
-    public User(String email, String password, String name) {
-        this.email = email;
-        this.password = password;
-        this.name = name;
-    }
+    private Date birthDay;
+    private String monthBirthtDay;
+    private String address;
+    private String cellPhone;
+    private String email;
+    private String password;
+    private String zone;
+    private String type;
 
 }

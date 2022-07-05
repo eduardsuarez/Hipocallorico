@@ -30,18 +30,65 @@ public class UserService implements Serializable {
         return repository.getUserById(id);
     }
 
-    public User saveUser(User user) {
-        return repository.saveUser(user);
-    }
-
     public boolean existeEmail(String email) {
         return repository.existeEmail(email);
     }
 
-    public User registrar(User user) {
+    public User autenticarUsuario(String email, String password) {
+        Optional<User> usuario = repository.autenticarUsuario(email, password);
+        if (usuario.isEmpty()) {
+            return new User();
+        } else {
+            return usuario.get();
+        }
+    }
+
+    public User save(User user) {
         if (user.getId() == null) {
-            if (existeEmail(user.getEmail()) == false) {
-                return repository.saveUser(user);
+            return user;
+        } else {
+            Optional<User> e = repository.getUserById(user.getId());
+            if (e.isEmpty()) {
+                if (existeEmail(user.getEmail()) == false) {
+                    return repository.save(user);
+                } else {
+                    return user;
+                }
+            } else {
+                return user;
+            }
+        }
+    }
+
+    public User update(User user) {
+
+        if (user.getId() != null) {
+            Optional<User> userDb = repository.getUserById(user.getId());
+            if (!userDb.isEmpty()) {
+                if (user.getIdentification() != null) {
+                    userDb.get().setIdentification(user.getIdentification());
+                }
+                if (user.getName() != null) {
+                    userDb.get().setName(user.getName());
+                }
+                if (user.getAddress() != null) {
+                    userDb.get().setAddress(user.getAddress());
+                }
+                if (user.getCellPhone() != null) {
+                    userDb.get().setCellPhone(user.getCellPhone());
+                }
+                if (user.getEmail() != null) {
+                    userDb.get().setEmail(user.getEmail());
+                }
+                if (user.getPassword() != null) {
+                    userDb.get().setPassword(user.getPassword());
+                }
+                if (user.getZone() != null) {
+                    userDb.get().setZone(user.getZone());
+                }
+
+                repository.update(userDb.get());
+                return userDb.get();
             } else {
                 return user;
             }
@@ -50,13 +97,19 @@ public class UserService implements Serializable {
         }
     }
 
-    public User autenticarUsuario(String email, String password) {
-        Optional<User> usuario = repository.autenticarUsuario(email, password);
-        if (usuario.isEmpty()) {
-            return new User(email, password, "NO DEFINIDO!");
-        } else {
-            return usuario.get();
-        }
-    }
+    public boolean delete(int userId) {
+        Optional<User> usuario = getUserById(userId);
 
+        if (usuario.isEmpty()) {
+            return false;
+        } else {
+            repository.delete(usuario.get());
+            return true;
+        }
+
+    }
+    
+    public List<User> birthtDayList(String monthBirthtDay) {
+        return repository.birthtDayList(monthBirthtDay);
+    }
 }
