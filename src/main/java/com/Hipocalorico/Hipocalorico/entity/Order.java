@@ -4,10 +4,6 @@
  */
 package com.Hipocalorico.Hipocalorico.entity;
 
-<<<<<<< HEAD
-import java.lang.annotation.Documented;
-=======
->>>>>>> 72c862f2b6f74493fc9e13e9bc33d278d83f2d79
 import java.util.Date;
 import java.util.Map;
 import javax.persistence.Id;
