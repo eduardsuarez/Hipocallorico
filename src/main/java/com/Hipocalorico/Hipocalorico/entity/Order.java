@@ -4,6 +4,7 @@
  */
 package com.Hipocalorico.Hipocalorico.entity;
 
+import java.lang.annotation.Documented;
 import java.util.Date;
 import java.util.Map;
 import javax.persistence.Id;
