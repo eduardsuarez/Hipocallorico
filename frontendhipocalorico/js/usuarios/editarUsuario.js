@@ -37,7 +37,7 @@
             $("#mensaje").html("Información recuperada...");
             $("#alerta").hide(1000);
             editarRespuesta(respuesta);
-            activaEditar();
+            activaEditarUsu();
         },
 
         // código a ejecutar si la petición falla;
@@ -146,7 +146,7 @@ function actualizar() {
 /**
  * Configura el aspecto de la página para actualizar el registro
  */
-function activaEditar() {
+function activaEditarUsu() {
     $("#editar").show(500);
     $("#identificationEdit").focus();
     $("#nuevo").hide();
